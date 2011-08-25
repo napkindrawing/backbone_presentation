@@ -23,6 +23,18 @@
 <div class="slide">
 	<!-- Slide content HTML goes here! -->
     <h2>backbone.js</h2>
+
+    <blockquote>
+      <a href="http://github.com/documentcloud/backbone/">Backbone</a>
+      supplies structure to JavaScript-heavy applications by providing:
+        <ul>
+          <li> <b>models</b> with key-value binding and custom events
+            <li><b>collections</b> with a rich API of enumerable functions
+            <li><b>views</b> with declarative event handling
+            <li>and it connects it all to your existing application over a RESTful JSON interface
+        </ul>
+    </blockquote>
+
     <div class="code_sample">
         <textarea>
 var dude = new Player({ name: "Dude" })
@@ -55,9 +67,72 @@ console.log( dude.get("name") )
     </div>
 </div>
 
-
 <div class="slide">
     <h2>underscore.js</h2>
+
+<p> 
+      <b>Collections</b> 
+      <br /> 
+      <span class="methods"><a href="http://documentcloud.github.com/underscore/#each">each</a>, <a href="http://documentcloud.github.com/underscore/#map">map</a>,
+      <a href="http://documentcloud.github.com/underscore/#reduce">reduce</a>, <a href="http://documentcloud.github.com/underscore/#reduceRight">reduceRight</a>,
+      <a href="http://documentcloud.github.com/underscore/#detect">detect</a>, <a href="http://documentcloud.github.com/underscore/#select">select</a>,
+      <a href="http://documentcloud.github.com/underscore/#reject">reject</a>, <a href="http://documentcloud.github.com/underscore/#all">all</a>,
+      <a href="http://documentcloud.github.com/underscore/#any">any</a>, <a href="http://documentcloud.github.com/underscore/#include">include</a>,
+      <a href="http://documentcloud.github.com/underscore/#invoke">invoke</a>, <a href="http://documentcloud.github.com/underscore/#pluck">pluck</a>,
+      <a href="http://documentcloud.github.com/underscore/#max">max</a>, <a href="http://documentcloud.github.com/underscore/#min">min</a>,
+      <a href="http://documentcloud.github.com/underscore/#sortBy">sortBy</a>, <a href="http://documentcloud.github.com/underscore/#groupBy">groupBy</a>, <a href="http://documentcloud.github.com/underscore/#sortedIndex">sortedIndex</a>,
+      <a href="http://documentcloud.github.com/underscore/#toArray">toArray</a>, <a href="http://documentcloud.github.com/underscore/#size">size</a></span> 
+    </p> 
+ 
+    <p> 
+      <b>Arrays</b> 
+      <br /> 
+      <span class="methods"><a href="http://documentcloud.github.com/underscore/#first">first</a>, <a href="http://documentcloud.github.com/underscore/#rest">rest</a>, <a href="http://documentcloud.github.com/underscore/#last">last</a>,
+      <a href="http://documentcloud.github.com/underscore/#compact">compact</a>, <a href="http://documentcloud.github.com/underscore/#flatten">flatten</a>, <a href="http://documentcloud.github.com/underscore/#without">without</a>, 
+      <a href="http://documentcloud.github.com/underscore/#union">union</a>, <a href="http://documentcloud.github.com/underscore/#intersection">intersection</a>, <a href="http://documentcloud.github.com/underscore/#difference">difference</a>, 
+      <a href="http://documentcloud.github.com/underscore/#uniq">uniq</a>, <a href="http://documentcloud.github.com/underscore/#zip">zip</a>, <a href="http://documentcloud.github.com/underscore/#indexOf">indexOf</a>,
+      <a href="http://documentcloud.github.com/underscore/#lastIndexOf">lastIndexOf</a>, <a href="http://documentcloud.github.com/underscore/#range">range</a></span> 
+    </p> 
+ 
+    <p> 
+      <b>Functions</b> 
+      <br /> 
+      <span class="methods"><a href="http://documentcloud.github.com/underscore/#bind">bind</a>, <a href="http://documentcloud.github.com/underscore/#bindAll">bindAll</a>, 
+      <a href="http://documentcloud.github.com/underscore/#memoize">memoize</a>, <a href="http://documentcloud.github.com/underscore/#delay">delay</a>, <a href="http://documentcloud.github.com/underscore/#defer">defer</a>, 
+      <a href="http://documentcloud.github.com/underscore/#throttle">throttle</a>, <a href="http://documentcloud.github.com/underscore/#debounce">debounce</a>, 
+      <a href="http://documentcloud.github.com/underscore/#once">once</a>, <a href="http://documentcloud.github.com/underscore/#after">after</a>, <a href="http://documentcloud.github.com/underscore/#wrap">wrap</a>, <a href="http://documentcloud.github.com/underscore/#compose">compose</a></span> 
+    </p> 
+ 
+    <p> 
+      <b>Objects</b> 
+      <br /> 
+      <span class="methods"><a href="http://documentcloud.github.com/underscore/#keys">keys</a>, <a href="http://documentcloud.github.com/underscore/#values">values</a>,
+      <a href="http://documentcloud.github.com/underscore/#functions">functions</a>, <a href="http://documentcloud.github.com/underscore/#extend">extend</a>, <a href="http://documentcloud.github.com/underscore/#defaults">defaults</a>, <a href="http://documentcloud.github.com/underscore/#clone">clone</a>, <a href="http://documentcloud.github.com/underscore/#tap">tap</a>,
+      <a href="http://documentcloud.github.com/underscore/#isEqual">isEqual</a>, <a href="http://documentcloud.github.com/underscore/#isEmpty">isEmpty</a>, <a href="http://documentcloud.github.com/underscore/#isElement">isElement</a>,
+      <a href="http://documentcloud.github.com/underscore/#isArray">isArray</a>, <a href="http://documentcloud.github.com/underscore/#isArguments">isArguments</a>, <a href="http://documentcloud.github.com/underscore/#isFunction">isFunction</a>, <a href="http://documentcloud.github.com/underscore/#isString">isString</a>,
+      <a href="http://documentcloud.github.com/underscore/#isNumber">isNumber</a>, <a href="http://documentcloud.github.com/underscore/#isBoolean">isBoolean</a>, <a href="http://documentcloud.github.com/underscore/#isDate">isDate</a>, <a href="http://documentcloud.github.com/underscore/#isRegExp">isRegExp</a> 
+      <a href="http://documentcloud.github.com/underscore/#isNaN">isNaN</a>, <a href="http://documentcloud.github.com/underscore/#isNull">isNull</a>,
+      <a href="http://documentcloud.github.com/underscore/#isUndefined">isUndefined</a> 
+      </span> 
+    </p> 
+ 
+    <p> 
+      <b>Utility</b> 
+      <br /> 
+      <span class="methods"><a href="http://documentcloud.github.com/underscore/#noConflict">noConflict</a>,
+      <a href="http://documentcloud.github.com/underscore/#identity">identity</a>, <a href="http://documentcloud.github.com/underscore/#times">times</a>, 
+      <a href="http://documentcloud.github.com/underscore/#mixin">mixin</a>, <a href="http://documentcloud.github.com/underscore/#uniqueId">uniqueId</a>, 
+      <a href="http://documentcloud.github.com/underscore/#template">template</a></span> 
+    </p> 
+ 
+    <p> 
+      <b>Chaining</b> 
+      <br /> 
+      <span class="methods"><a href="http://documentcloud.github.com/underscore/#chain">chain</a>, <a href="http://documentcloud.github.com/underscore/#value">value</a> 
+    </p> 
+</div>
+<div class="slide">
+    <h2>underscore.js - .intersection() </h2>
     <div class="code_sample">
         <textarea>
 var senators = [ 'Dodd', 'Franken', 'Lieberman' ]
