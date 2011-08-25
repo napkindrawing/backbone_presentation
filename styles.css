@@ -1,0 +1,42 @@
+body {
+    font-family: sans-serif;
+}
+
+q, cite {
+    float: left;
+    clear: both;
+}
+q {
+}
+.deck-container q:before,
+.deck-container q:after {
+    content: "\0022";
+}
+.deck-container cite {
+    margin-left: 40px;
+    display: block;
+}
+cite:before {
+    content: " - ";
+}
+
+.code_sample {
+    height: 120px;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+.code_sample textarea,
+.code_sample button,
+.code_sample pre {
+    float: left;
+}
+.code_sample button {
+    margin-top: 48px;
+}
+.code_sample textarea,
+.code_sample pre {
+    width: 40%;
+    height: 120px;
+    padding: 8px;
+    margin: 8px;
+}

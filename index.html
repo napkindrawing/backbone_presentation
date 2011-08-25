@@ -9,6 +9,10 @@
 	<link rel="stylesheet" href="deck.js/core/deck.core.css" type="text/css">
 	
 	<!-- Any other extension CSS files go here. -->
+	<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css" type="text/css">
+	<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css" type="text/css">
+	<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css" type="text/css">
+	<link rel="stylesheet" href="styles.css" type="text/css">
 	
 	<!-- Replace path with correct path to Modernizr file. -->
 	<script src="deck.js/modernizr.custom.js"></script>
@@ -18,28 +22,75 @@
 <!-- Create any number of elements with class slide within the container -->
 <div class="slide">
 	<!-- Slide content HTML goes here! -->
-    <h2>Boy Howdy!</h2>
+    <h2>backbone.js</h2>
+    <div class="code_sample">
+        <textarea>
+var dude = new Player({ name: "Dude" })
+
+console.log( dude.get("name") )
+        </textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
 </div>
 	
 <div class="slide">
-	<!-- Slide content HTML goes here! -->
-    <h2>Dolla dolla bill y'all!</h2>
+    <h2>Global State</h2>
+    <img src="images/guns.jpg" />
+</div>
+	
+<div class="slide">
+    <h2>Let's Get Organized</h2>
+    <img src="images/bjork.png" />
+    <q>I thought I could organize freedom, how Scandinavian of me.</q>
+    <cite>Bjork</cite>
 </div>
 	
 <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
 
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<p class="deck-status">
+    <span class="deck-status-current"></span>
+    /
+    <span class="deck-status-total"></span>
+</p>
+
 <!-- Update these paths to point to the correct files. -->
 <script src="jquery-1.6.2.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
 
 <!-- Add any other extension JS files here -->
 
+<script src="app.js"></script>
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
 	$(function() {
 		$.deck('.slide');
 	});
+    jQuery('.code_sample button').click(function() {
+        var button = jQuery(this);
+        code = button.siblings('textarea').val();
+        output = button.siblings('pre');
+        var origLog = console.log;
+        var log = ''
+        console.log = function() {
+            for(var a=0;a<arguments.length;a++) {
+                log = log + arguments[a] + " "
+            }
+            origLog.apply(console, arguments)
+        }
+        var out = eval(code)
+        console.log = origLog
+        output.text( log );
+    });
 </script>
 </body>
 </html>
