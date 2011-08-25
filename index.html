@@ -33,6 +33,62 @@ console.log( dude.get("name") )
         <pre></pre>
     </div>
 </div>
+
+<div class="slide">
+    <h2>Javascript</h2>
+    <ul style="float: left; clear: both;">
+        <li class="slide">Do Everything Yourself</li>
+        <li class="slide">Hodge-Podge Objects As Hashes</li>
+        <li class="slide">Global Variables</li>
+        <li class="slide">No / Terrible Modularity</li>
+        <li class="slide">Function Party</li>
+        <li class="slide">Anarchy</li>
+    </ul>
+    <img style="float: right;" class="slide" src="images/guns.jpg" />
+    <h2 style="float: left; clear: both; width: 100%;" class="slide">Unhelpful Advice</h2>
+    <ul style="float: left; clear: both;">
+        <li class="slide">Javascript's low-level primatives are all you need to write code!</li>
+    </ul>
+    <div class="slide">
+        <img src="images/nick_burns.jpg" style="clear: both;" height=120 width=160 />
+        <q>Uh, <strong>DUH</strong>, you just need to curry your lambdas.</q>
+    </div>
+</div>
+
+
+<div class="slide">
+    <h2>underscore.js</h2>
+    <div class="code_sample">
+        <textarea>
+var senators = [ 'Dodd', 'Franken', 'Lieberman' ]
+var comedians = [ 'Rock', 'Seinfeld', 'Franken' ]
+
+var intersect = []
+for(var s=0;s<senators.length;s++) {
+    for(var c=0;c<comedians.length;c++) {
+        if(senators[s] == comedians[c]) {
+            intersect.push( senators[s] );
+            break;
+        }
+    }
+}
+
+console.log("Comedian Senators: ", intersect)</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+    <div class="code_sample">
+        <textarea>
+var senators = [ 'Dodd', 'Franken', 'Lieberman' ]
+var comedians = [ 'Rock', 'Seinfeld', 'Franken' ]
+
+var intersect = _.intersection(senators,comedians)
+
+console.log("Comedian Senators: ", intersect)</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+</div>
 	
 <div class="slide">
     <h2>Global State</h2>
@@ -75,6 +131,11 @@ console.log( dude.get("name") )
 	$(function() {
 		$.deck('.slide');
 	});
+    jQuery('.code_sample textarea').each(function() {
+        var lines = this.value.match(/\n/g) ? this.value.match(/\n/g).length : 1
+        jQuery(this).css({ height: 28 + lines * 20 })
+            .siblings('pre').css({ height: 28 + lines * 20 })
+    })
     jQuery('.code_sample button').click(function() {
         var button = jQuery(this);
         code = button.siblings('textarea').val();
@@ -83,8 +144,13 @@ console.log( dude.get("name") )
         var log = ''
         console.log = function() {
             for(var a=0;a<arguments.length;a++) {
-                log = log + arguments[a] + " "
+                if(typeof arguments[a] == 'object') {
+                    log = log + JSON.stringify(arguments[a]) + " "
+                } else {
+                    log = log + arguments[a] + " "
+                }
             }
+            log = log + "\n"
             origLog.apply(console, arguments)
         }
         var out = eval(code)

@@ -35,8 +35,17 @@ cite:before {
 }
 .code_sample textarea,
 .code_sample pre {
-    width: 40%;
+    width: 42%;
     height: 120px;
     padding: 8px;
     margin: 8px;
+}
+
+img {
+    float: left;
+}
+.slide li img {
+    float: none;
+  display: inline;
+margin: 0;
 }
