@@ -39,6 +39,8 @@ cite:before {
     height: 120px;
     padding: 8px;
     margin: 8px;
+    font-size: 14px;
+    font-family: monospace;
 }
 
 img {

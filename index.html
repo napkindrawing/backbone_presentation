@@ -204,6 +204,49 @@ console.log("Comedian Senators: ", intersect)</textarea>
 </div>
 
 <div class="slide">
+    <h2>underscore.js &mdash; .isEqual(object, other) </h2>
+    <div class="code_sample">
+        <textarea>
+var a = { name: "Moe",
+          stats: { violent: true,
+                   age: 78,
+                   legs: 2 } }
+var b = { name: "Moe",
+          stats: { violent: true,
+                   age: 78,
+                   legs: 2 } }
+
+console.log("a == b .......... ", a == b)
+
+console.log("_.isEqual(a,b) .. ", _.isEqual(a,b))</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+    <h2>underscore.js &mdash; .select(list, iterator, [context]) </h2>
+    <div class="code_sample">
+        <textarea>
+var users = [
+    { name: "Frank", age: 17 },
+    { name: "Vladimir", age: 21 },
+    { name: "Susan", age: 88 },
+    { name: "Benny", age: 19 },
+    { name: "Rudolph", age: 34 },
+    { name: "Tony", age: 16 }
+]
+
+var teens = _.select(
+    users,
+    function(user) {
+        return user.age >= 13 && user.age <= 19
+    }
+)
+console.log( 'Teens: ', teens )</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+</div>
+
+<div class="slide">
     <h2>underscore.js &mdash; .pluck(list, propertyName) </h2>
     <div class="code_sample">
         <textarea>
@@ -356,8 +399,8 @@ console.log("Ready to flash reasonably!")</textarea>
 	});
     jQuery('.code_sample textarea').each(function() {
         var lines = this.value.match(/\n/g) ? this.value.match(/\n/g).length : 1
-        jQuery(this).css({ height: 32 + lines * 20 })
-            .siblings('pre').css({ height: 32 + lines * 20 })
+        jQuery(this).css({ height: 24 + lines * 18 })
+            .siblings('pre').css({ height: 24 + lines * 18 })
     })
     jQuery('.code_sample button').click(function() {
         var button = jQuery(this);
