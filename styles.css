@@ -46,11 +46,11 @@ img {
 }
 .slide li img {
     float: none;
-  display: inline;
-margin: 0;
+    display: inline;
+    margin: 0;
 }
 
 .slide blockquote {
-    margin: 0 auto;
-width: 600px;
+    margin: 0 auto 32px;
+    width: 600px;
 }

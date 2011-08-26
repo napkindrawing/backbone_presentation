@@ -28,26 +28,32 @@
       <a href="http://github.com/documentcloud/backbone/">Backbone</a>
       supplies structure to JavaScript-heavy applications by providing:
         <ul>
-          <li> <b>models</b> with key-value binding and custom events
-            <li><b>collections</b> with a rich API of enumerable functions
-            <li><b>views</b> with declarative event handling
-            <li>and it connects it all to your existing application over a RESTful JSON interface
+          <li><b>models</b> with key-value binding and custom events</li>
+          <li><b>collections</b> with a rich API of enumerable functions</li>
+          <li><b>views</b> with declarative event handling</li>
+          <li>and it connects it all to your existing application over a RESTful JSON interface</li>
         </ul>
     </blockquote>
 
     <div class="code_sample">
         <textarea>
-var dude = new Player({ name: "Dude" })
+var Player = Backbone.Model.extend({
+    defaults: {
+        name: "Unnamed Player",
+        points: 0
+    }
+});
 
-console.log( dude.get("name") )
-        </textarea>
+var tony = new Player({ name: "Tony" });
+
+console.log( tony.get('name') );</textarea>
         <button>→</button>
         <pre></pre>
     </div>
 </div>
 
 <div class="slide">
-    <h2>Javascript</h2>
+    <h2>Javascript - Code Organization</h2>
     <ul style="float: left; clear: both;">
         <li class="slide">Do Everything Yourself</li>
         <li class="slide">Hodge-Podge Objects As Hashes</li>
@@ -57,6 +63,17 @@ console.log( dude.get("name") )
         <li class="slide">Anarchy</li>
     </ul>
     <img style="float: right;" class="slide" src="images/guns.jpg" />
+</div>
+
+<div class="slide">
+    <h2>Javascript - Runtime Environment</h2>
+    <ul style="float: left; clear: both;">
+        <li class="slide">Different Native Methods</li>
+        <li class="slide">this</li>
+        <li class="slide">inheritance</li>
+        <li class="slide">instance methods</li>
+        <li class="slide">class methods</li>
+    </ul>
     <h2 style="float: left; clear: both; width: 100%;" class="slide">Unhelpful Advice</h2>
     <ul style="float: left; clear: both;">
         <li class="slide">Javascript's low-level primatives are all you need to write code!</li>
@@ -69,6 +86,26 @@ console.log( dude.get("name") )
 
 <div class="slide">
     <h2>underscore.js</h2>
+
+    <blockquote>
+      <a href="http://github.com/documentcloud/underscore/">Underscore</a> is a
+      utility-belt library for JavaScript that provides a lot of the
+      functional programming support that you would expect in
+      <a href="http://prototypejs.org/api">Prototype.js</a>
+      (or <a href="http://www.ruby-doc.org/core/classes/Enumerable.html">Ruby</a>),
+      but without extending any of the built-in JavaScript objects. It's the
+      tie to go along with <a href="http://docs.jquery.com">jQuery</a>'s tux.
+    </blockquote>
+ 
+    <blockquote>
+      Underscore provides 60-odd functions that support both the usual
+      functional suspects: <b>map</b>, <b>select</b>, <b>invoke</b> —
+      as well as more specialized helpers: function binding, javascript
+      templating, deep equality testing, and so on. It delegates to built-in
+      functions, if present, so modern browsers will use the
+      native implementations of <b>forEach</b>, <b>map</b>, <b>reduce</b>,
+      <b>filter</b>, <b>every</b>, <b>some</b> and <b>indexOf</b>.
+    </blockquote>
 
 <p> 
       <b>Collections</b> 
@@ -131,8 +168,9 @@ console.log( dude.get("name") )
       <span class="methods"><a href="http://documentcloud.github.com/underscore/#chain">chain</a>, <a href="http://documentcloud.github.com/underscore/#value">value</a> 
     </p> 
 </div>
+
 <div class="slide">
-    <h2>underscore.js - .intersection() </h2>
+    <h2>underscore.js &mdash; .intersection(arr1, arr2 ... ) </h2>
     <div class="code_sample">
         <textarea>
 var senators = [ 'Dodd', 'Franken', 'Lieberman' ]
@@ -164,10 +202,120 @@ console.log("Comedian Senators: ", intersect)</textarea>
         <pre></pre>
     </div>
 </div>
+
+<div class="slide">
+    <h2>underscore.js &mdash; .pluck(list, propertyName) </h2>
+    <div class="code_sample">
+        <textarea>
+var users = [
+    { id: 101, name: "Frank", age: 23 },
+    { id: 939, name: "Susan", age: 37 },
+    { id: 244, name: "Albert", age: 44 }
+]
+
+var names = _.pluck( users, 'name' )
+
+console.log( names )</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+    <h2>underscore.js &mdash; .groupBy(list, iterator) </h2>
+    <div class="code_sample">
+        <textarea>
+var users = [
+    { name: "Frank", country: 'USA' },
+    { name: "Vladimir", country: 'RUS' },
+    { name: "Tony", country: 'USA' }
+]
+
+var by_country =
+    _.groupBy( users, function(u) { return u.country })
+
+console.log( 'USA:', by_country['USA'] )
+console.log( 'RUS:', by_country['RUS'] )</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+</div>
+
+<div class="slide">
+    <h2>underscore.js &mdash; _(obj).chain() <img src="images/bb.gif" height="43" width="50" style="float: right;" /></h2>
+    <div class="code_sample">
+        <textarea>
+var users = [
+    { name: "Frank", country: "USA", age: 20 },
+    { name: "Mark", country: "CAN", age: 41 },
+    { name: "Tony", country: "USA", age: 30 },
+    { name: "Bruce", country: "CAN", age: 38 },
+    { name: "Pierre", country: "FRA", age: 16 },
+    { name: "Kevin", country: "CAN", age: 32 },
+    { name: "Dave", country: "CAN", age: 39 }
+]
+
+var canadians_by_age = _(users).chain()
+    .select(function(user) {
+        return user.country == 'CAN'
+    })
+    .sortBy(function(user) {
+        return user.age
+    })
+    .map(function(user) {
+        return user.name
+    })
+    .value()
+
+console.log(canadians_by_age)</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+</div>
+
+<div class="slide">
+    <h2>underscore.js &mdash; .debounce() </h2>
+    <button id="flash">Flash Background!</button>
+    <div class="code_sample">
+        <textarea>
+flash = function() {
+
+    jQuery('.slide.deck-current')
+        .css({ backgroundColor: 'yellow', })
+
+    _.delay(
+        function() { 
+            jQuery('.slide.deck-current')
+                .css({ backgroundColor: 'white' })
+        },
+        100
+    )
+}
+
+jQuery('#flash')
+    .bind('click', flash)
+
+console.log("Ready to flash!")</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+    <div class="code_sample">
+        <textarea>
+flash_rate_limited = _.debounce(flash, 1000);
+
+jQuery('#flash')
+    .unbind('click')
+    .bind('click', flash_rate_limited)
+
+console.log("Ready to flash reasonably!")</textarea>
+        <button>→</button>
+        <pre></pre>
+    </div>
+</div>
 	
 <div class="slide">
-    <h2>Global State</h2>
-    <img src="images/guns.jpg" />
+    <h2>WUH</h2>
+</div>
+	
+<div class="slide">
+    <h2>HUH</h2>
 </div>
 	
 <div class="slide">
@@ -208,8 +356,8 @@ console.log("Comedian Senators: ", intersect)</textarea>
 	});
     jQuery('.code_sample textarea').each(function() {
         var lines = this.value.match(/\n/g) ? this.value.match(/\n/g).length : 1
-        jQuery(this).css({ height: 28 + lines * 20 })
-            .siblings('pre').css({ height: 28 + lines * 20 })
+        jQuery(this).css({ height: 32 + lines * 20 })
+            .siblings('pre').css({ height: 32 + lines * 20 })
     })
     jQuery('.code_sample button').click(function() {
         var button = jQuery(this);
