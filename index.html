@@ -1,382 +1,449 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Deck Skeleton</title>
-	<meta name="viewport" content="width=1024">
-	
-	<!-- Replace path with correct path to deck.core.css. -->
-	<link rel="stylesheet" href="deck.js/core/deck.core.css" type="text/css">
-	
-	<!-- Any other extension CSS files go here. -->
-	<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css" type="text/css">
-	<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css" type="text/css">
-	<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css" type="text/css">
-	<link rel="stylesheet" href="styles.css" type="text/css">
-	
-	<!-- Replace path with correct path to Modernizr file. -->
-	<script src="deck.js/modernizr.custom.js"></script>
+<meta charset="utf-8">
+<title>Deck Skeleton</title>
+<meta name="viewport" content="width=1024">
+
+<!-- Replace path with correct path to deck.core.css. -->
+<link rel="stylesheet" href="deck.js/core/deck.core.css" type="text/css">
+
+<!-- Any other extension CSS files go here. -->
+<link rel="stylesheet" href="deck.js/extensions/navigation/deck.navigation.css" type="text/css">
+<link rel="stylesheet" href="deck.js/extensions/status/deck.status.css" type="text/css">
+<link rel="stylesheet" href="deck.js/extensions/hash/deck.hash.css" type="text/css">
+<link rel="stylesheet" href="deck.js/extensions/menu/deck.menu.css" type="text/css">
+<link rel="stylesheet" href="styles.css" type="text/css">
+
+<!-- Replace path with correct path to Modernizr file. -->
+<script src="deck.js/modernizr.custom.js"></script>
 </head>
 <body class="deck-container">
 
 <!-- Create any number of elements with class slide within the container -->
 <div class="slide">
-	<!-- Slide content HTML goes here! -->
-    <h2>backbone.js</h2>
+<!-- Slide content HTML goes here! -->
+  <h2>backbone.js</h2>
 
-    <blockquote>
-      <a href="http://github.com/documentcloud/backbone/">Backbone</a>
-      supplies structure to JavaScript-heavy applications by providing:
-        <ul>
-          <li><b>models</b> with key-value binding and custom events</li>
-          <li><b>collections</b> with a rich API of enumerable functions</li>
-          <li><b>views</b> with declarative event handling</li>
-          <li>and it connects it all to your existing application over a RESTful JSON interface</li>
-        </ul>
-    </blockquote>
+  <blockquote>
+   <a href="http://github.com/documentcloud/backbone/">Backbone</a>
+   supplies structure to JavaScript-heavy applications by providing:
+    <ul>
+     <li><b>models</b> with key-value binding and custom events</li>
+     <li><b>collections</b> with a rich API of enumerable functions</li>
+     <li><b>views</b> with declarative event handling</li>
+     <li>and it connects it all to your existing application over a RESTful JSON interface</li>
+    </ul>
+  </blockquote>
 
-    <div class="code_sample">
-        <textarea>
+  <div class="code_sample">
+    <textarea>
 var Player = Backbone.Model.extend({
-    defaults: {
-        name: "Unnamed Player",
-        points: 0
-    }
+  defaults: {
+    name: "Unnamed Player",
+    points: 0
+  }
 });
 
 var tony = new Player({ name: "Tony" });
 
 console.log( tony.get('name') );</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
+    <button>→</button>
+    <pre></pre>
+  </div>
 </div>
 
 <div class="slide">
-    <h2>Javascript - Code Organization</h2>
-    <ul style="float: left; clear: both;">
-        <li class="slide">Do Everything Yourself</li>
-        <li class="slide">Hodge-Podge Objects As Hashes</li>
-        <li class="slide">Global Variables</li>
-        <li class="slide">No / Terrible Modularity</li>
-        <li class="slide">Function Party</li>
-        <li class="slide">Anarchy</li>
-    </ul>
-    <img style="float: right;" class="slide" src="images/guns.jpg" />
+  <h2>Javascript - Code Organization</h2>
+  <ul style="float: left; clear: both;">
+    <li class="slide">Do Everything Yourself</li>
+    <li class="slide">Hodge-Podge Objects As Hashes</li>
+    <li class="slide">Global Variables</li>
+    <li class="slide">No / Terrible Modularity</li>
+    <li class="slide">Function Party</li>
+    <li class="slide">Anarchy</li>
+  </ul>
+  <img style="float: right;" class="slide" src="images/guns.jpg" />
 </div>
 
 <div class="slide">
-    <h2>Javascript - Runtime Environment</h2>
-    <ul style="float: left; clear: both;">
-        <li class="slide">Different Native Methods</li>
-        <li class="slide">this</li>
-        <li class="slide">inheritance</li>
-        <li class="slide">instance methods</li>
-        <li class="slide">class methods</li>
-    </ul>
-    <h2 style="float: left; clear: both; width: 100%;" class="slide">Unhelpful Advice</h2>
-    <ul style="float: left; clear: both;">
-        <li class="slide">Javascript's low-level primatives are all you need to write code!</li>
-    </ul>
-    <div class="slide">
-        <img src="images/nick_burns.jpg" style="clear: both;" height=120 width=160 />
-        <q>Uh, <strong>DUH</strong>, you just need to curry your lambdas.</q>
-    </div>
+  <h2>Javascript - Runtime Environment</h2>
+  <ul style="float: left; clear: both;">
+    <li class="slide">Different Native Methods</li>
+    <li class="slide">this</li>
+    <li class="slide">inheritance</li>
+    <li class="slide">instance methods</li>
+    <li class="slide">class methods</li>
+  </ul>
+  <h2 style="float: left; clear: both; width: 100%;" class="slide">Unhelpful Advice</h2>
+  <ul style="float: left; clear: both;">
+    <li class="slide">Javascript's low-level primatives are all you need to write code!</li>
+  </ul>
+  <div class="slide">
+    <img src="images/nick_burns.jpg" style="clear: both;" height=120 width=160 />
+    <q>Uh, <strong>DUH</strong>, you just need to curry your lambdas.</q>
+  </div>
 </div>
 
 <div class="slide">
-    <h2>underscore.js</h2>
+  <h2>underscore.js</h2>
 
-    <blockquote>
-      <a href="http://github.com/documentcloud/underscore/">Underscore</a> is a
-      utility-belt library for JavaScript that provides a lot of the
-      functional programming support that you would expect in
-      <a href="http://prototypejs.org/api">Prototype.js</a>
-      (or <a href="http://www.ruby-doc.org/core/classes/Enumerable.html">Ruby</a>),
-      but without extending any of the built-in JavaScript objects. It's the
-      tie to go along with <a href="http://docs.jquery.com">jQuery</a>'s tux.
-    </blockquote>
- 
-    <blockquote>
-      Underscore provides 60-odd functions that support both the usual
-      functional suspects: <b>map</b>, <b>select</b>, <b>invoke</b> —
-      as well as more specialized helpers: function binding, javascript
-      templating, deep equality testing, and so on. It delegates to built-in
-      functions, if present, so modern browsers will use the
-      native implementations of <b>forEach</b>, <b>map</b>, <b>reduce</b>,
-      <b>filter</b>, <b>every</b>, <b>some</b> and <b>indexOf</b>.
-    </blockquote>
+  <blockquote>
+   <a href="http://github.com/documentcloud/underscore/">Underscore</a> is a
+   utility-belt library for JavaScript that provides a lot of the
+   functional programming support that you would expect in
+   <a href="http://prototypejs.org/api">Prototype.js</a>
+   (or <a href="http://www.ruby-doc.org/core/classes/Enumerable.html">Ruby</a>),
+   but without extending any of the built-in JavaScript objects. It's the
+   tie to go along with <a href="http://docs.jquery.com">jQuery</a>'s tux.
+  </blockquote>
+
+  <blockquote>
+   Underscore provides 60-odd functions that support both the usual
+   functional suspects: <b>map</b>, <b>select</b>, <b>invoke</b> —
+   as well as more specialized helpers: function binding, javascript
+   templating, deep equality testing, and so on. It delegates to built-in
+   functions, if present, so modern browsers will use the
+   native implementations of <b>forEach</b>, <b>map</b>, <b>reduce</b>,
+   <b>filter</b>, <b>every</b>, <b>some</b> and <b>indexOf</b>.
+  </blockquote>
 
 <p> 
-      <b>Collections</b> 
-      <br /> 
-      <span class="methods"><a href="http://documentcloud.github.com/underscore/#each">each</a>, <a href="http://documentcloud.github.com/underscore/#map">map</a>,
-      <a href="http://documentcloud.github.com/underscore/#reduce">reduce</a>, <a href="http://documentcloud.github.com/underscore/#reduceRight">reduceRight</a>,
-      <a href="http://documentcloud.github.com/underscore/#detect">detect</a>, <a href="http://documentcloud.github.com/underscore/#select">select</a>,
-      <a href="http://documentcloud.github.com/underscore/#reject">reject</a>, <a href="http://documentcloud.github.com/underscore/#all">all</a>,
-      <a href="http://documentcloud.github.com/underscore/#any">any</a>, <a href="http://documentcloud.github.com/underscore/#include">include</a>,
-      <a href="http://documentcloud.github.com/underscore/#invoke">invoke</a>, <a href="http://documentcloud.github.com/underscore/#pluck">pluck</a>,
-      <a href="http://documentcloud.github.com/underscore/#max">max</a>, <a href="http://documentcloud.github.com/underscore/#min">min</a>,
-      <a href="http://documentcloud.github.com/underscore/#sortBy">sortBy</a>, <a href="http://documentcloud.github.com/underscore/#groupBy">groupBy</a>, <a href="http://documentcloud.github.com/underscore/#sortedIndex">sortedIndex</a>,
-      <a href="http://documentcloud.github.com/underscore/#toArray">toArray</a>, <a href="http://documentcloud.github.com/underscore/#size">size</a></span> 
-    </p> 
- 
-    <p> 
-      <b>Arrays</b> 
-      <br /> 
-      <span class="methods"><a href="http://documentcloud.github.com/underscore/#first">first</a>, <a href="http://documentcloud.github.com/underscore/#rest">rest</a>, <a href="http://documentcloud.github.com/underscore/#last">last</a>,
-      <a href="http://documentcloud.github.com/underscore/#compact">compact</a>, <a href="http://documentcloud.github.com/underscore/#flatten">flatten</a>, <a href="http://documentcloud.github.com/underscore/#without">without</a>, 
-      <a href="http://documentcloud.github.com/underscore/#union">union</a>, <a href="http://documentcloud.github.com/underscore/#intersection">intersection</a>, <a href="http://documentcloud.github.com/underscore/#difference">difference</a>, 
-      <a href="http://documentcloud.github.com/underscore/#uniq">uniq</a>, <a href="http://documentcloud.github.com/underscore/#zip">zip</a>, <a href="http://documentcloud.github.com/underscore/#indexOf">indexOf</a>,
-      <a href="http://documentcloud.github.com/underscore/#lastIndexOf">lastIndexOf</a>, <a href="http://documentcloud.github.com/underscore/#range">range</a></span> 
-    </p> 
- 
-    <p> 
-      <b>Functions</b> 
-      <br /> 
-      <span class="methods"><a href="http://documentcloud.github.com/underscore/#bind">bind</a>, <a href="http://documentcloud.github.com/underscore/#bindAll">bindAll</a>, 
-      <a href="http://documentcloud.github.com/underscore/#memoize">memoize</a>, <a href="http://documentcloud.github.com/underscore/#delay">delay</a>, <a href="http://documentcloud.github.com/underscore/#defer">defer</a>, 
-      <a href="http://documentcloud.github.com/underscore/#throttle">throttle</a>, <a href="http://documentcloud.github.com/underscore/#debounce">debounce</a>, 
-      <a href="http://documentcloud.github.com/underscore/#once">once</a>, <a href="http://documentcloud.github.com/underscore/#after">after</a>, <a href="http://documentcloud.github.com/underscore/#wrap">wrap</a>, <a href="http://documentcloud.github.com/underscore/#compose">compose</a></span> 
-    </p> 
- 
-    <p> 
-      <b>Objects</b> 
-      <br /> 
-      <span class="methods"><a href="http://documentcloud.github.com/underscore/#keys">keys</a>, <a href="http://documentcloud.github.com/underscore/#values">values</a>,
-      <a href="http://documentcloud.github.com/underscore/#functions">functions</a>, <a href="http://documentcloud.github.com/underscore/#extend">extend</a>, <a href="http://documentcloud.github.com/underscore/#defaults">defaults</a>, <a href="http://documentcloud.github.com/underscore/#clone">clone</a>, <a href="http://documentcloud.github.com/underscore/#tap">tap</a>,
-      <a href="http://documentcloud.github.com/underscore/#isEqual">isEqual</a>, <a href="http://documentcloud.github.com/underscore/#isEmpty">isEmpty</a>, <a href="http://documentcloud.github.com/underscore/#isElement">isElement</a>,
-      <a href="http://documentcloud.github.com/underscore/#isArray">isArray</a>, <a href="http://documentcloud.github.com/underscore/#isArguments">isArguments</a>, <a href="http://documentcloud.github.com/underscore/#isFunction">isFunction</a>, <a href="http://documentcloud.github.com/underscore/#isString">isString</a>,
-      <a href="http://documentcloud.github.com/underscore/#isNumber">isNumber</a>, <a href="http://documentcloud.github.com/underscore/#isBoolean">isBoolean</a>, <a href="http://documentcloud.github.com/underscore/#isDate">isDate</a>, <a href="http://documentcloud.github.com/underscore/#isRegExp">isRegExp</a> 
-      <a href="http://documentcloud.github.com/underscore/#isNaN">isNaN</a>, <a href="http://documentcloud.github.com/underscore/#isNull">isNull</a>,
-      <a href="http://documentcloud.github.com/underscore/#isUndefined">isUndefined</a> 
-      </span> 
-    </p> 
- 
-    <p> 
-      <b>Utility</b> 
-      <br /> 
-      <span class="methods"><a href="http://documentcloud.github.com/underscore/#noConflict">noConflict</a>,
-      <a href="http://documentcloud.github.com/underscore/#identity">identity</a>, <a href="http://documentcloud.github.com/underscore/#times">times</a>, 
-      <a href="http://documentcloud.github.com/underscore/#mixin">mixin</a>, <a href="http://documentcloud.github.com/underscore/#uniqueId">uniqueId</a>, 
-      <a href="http://documentcloud.github.com/underscore/#template">template</a></span> 
-    </p> 
- 
-    <p> 
-      <b>Chaining</b> 
-      <br /> 
-      <span class="methods"><a href="http://documentcloud.github.com/underscore/#chain">chain</a>, <a href="http://documentcloud.github.com/underscore/#value">value</a> 
-    </p> 
+   <b>Collections</b> 
+   <br /> 
+   <span class="methods"><a href="http://documentcloud.github.com/underscore/#each">each</a>, <a href="http://documentcloud.github.com/underscore/#map">map</a>,
+   <a href="http://documentcloud.github.com/underscore/#reduce">reduce</a>, <a href="http://documentcloud.github.com/underscore/#reduceRight">reduceRight</a>,
+   <a href="http://documentcloud.github.com/underscore/#detect">detect</a>, <a href="http://documentcloud.github.com/underscore/#select">select</a>,
+   <a href="http://documentcloud.github.com/underscore/#reject">reject</a>, <a href="http://documentcloud.github.com/underscore/#all">all</a>,
+   <a href="http://documentcloud.github.com/underscore/#any">any</a>, <a href="http://documentcloud.github.com/underscore/#include">include</a>,
+   <a href="http://documentcloud.github.com/underscore/#invoke">invoke</a>, <a href="http://documentcloud.github.com/underscore/#pluck">pluck</a>,
+   <a href="http://documentcloud.github.com/underscore/#max">max</a>, <a href="http://documentcloud.github.com/underscore/#min">min</a>,
+   <a href="http://documentcloud.github.com/underscore/#sortBy">sortBy</a>, <a href="http://documentcloud.github.com/underscore/#groupBy">groupBy</a>, <a href="http://documentcloud.github.com/underscore/#sortedIndex">sortedIndex</a>,
+   <a href="http://documentcloud.github.com/underscore/#toArray">toArray</a>, <a href="http://documentcloud.github.com/underscore/#size">size</a></span> 
+  </p> 
+
+  <p> 
+   <b>Arrays</b> 
+   <br /> 
+   <span class="methods"><a href="http://documentcloud.github.com/underscore/#first">first</a>, <a href="http://documentcloud.github.com/underscore/#rest">rest</a>, <a href="http://documentcloud.github.com/underscore/#last">last</a>,
+   <a href="http://documentcloud.github.com/underscore/#compact">compact</a>, <a href="http://documentcloud.github.com/underscore/#flatten">flatten</a>, <a href="http://documentcloud.github.com/underscore/#without">without</a>, 
+   <a href="http://documentcloud.github.com/underscore/#union">union</a>, <a href="http://documentcloud.github.com/underscore/#intersection">intersection</a>, <a href="http://documentcloud.github.com/underscore/#difference">difference</a>, 
+   <a href="http://documentcloud.github.com/underscore/#uniq">uniq</a>, <a href="http://documentcloud.github.com/underscore/#zip">zip</a>, <a href="http://documentcloud.github.com/underscore/#indexOf">indexOf</a>,
+   <a href="http://documentcloud.github.com/underscore/#lastIndexOf">lastIndexOf</a>, <a href="http://documentcloud.github.com/underscore/#range">range</a></span> 
+  </p> 
+
+  <p> 
+   <b>Functions</b> 
+   <br /> 
+   <span class="methods"><a href="http://documentcloud.github.com/underscore/#bind">bind</a>, <a href="http://documentcloud.github.com/underscore/#bindAll">bindAll</a>, 
+   <a href="http://documentcloud.github.com/underscore/#memoize">memoize</a>, <a href="http://documentcloud.github.com/underscore/#delay">delay</a>, <a href="http://documentcloud.github.com/underscore/#defer">defer</a>, 
+   <a href="http://documentcloud.github.com/underscore/#throttle">throttle</a>, <a href="http://documentcloud.github.com/underscore/#debounce">debounce</a>, 
+   <a href="http://documentcloud.github.com/underscore/#once">once</a>, <a href="http://documentcloud.github.com/underscore/#after">after</a>, <a href="http://documentcloud.github.com/underscore/#wrap">wrap</a>, <a href="http://documentcloud.github.com/underscore/#compose">compose</a></span> 
+  </p> 
+
+  <p> 
+   <b>Objects</b> 
+   <br /> 
+   <span class="methods"><a href="http://documentcloud.github.com/underscore/#keys">keys</a>, <a href="http://documentcloud.github.com/underscore/#values">values</a>,
+   <a href="http://documentcloud.github.com/underscore/#functions">functions</a>, <a href="http://documentcloud.github.com/underscore/#extend">extend</a>, <a href="http://documentcloud.github.com/underscore/#defaults">defaults</a>, <a href="http://documentcloud.github.com/underscore/#clone">clone</a>, <a href="http://documentcloud.github.com/underscore/#tap">tap</a>,
+   <a href="http://documentcloud.github.com/underscore/#isEqual">isEqual</a>, <a href="http://documentcloud.github.com/underscore/#isEmpty">isEmpty</a>, <a href="http://documentcloud.github.com/underscore/#isElement">isElement</a>,
+   <a href="http://documentcloud.github.com/underscore/#isArray">isArray</a>, <a href="http://documentcloud.github.com/underscore/#isArguments">isArguments</a>, <a href="http://documentcloud.github.com/underscore/#isFunction">isFunction</a>, <a href="http://documentcloud.github.com/underscore/#isString">isString</a>,
+   <a href="http://documentcloud.github.com/underscore/#isNumber">isNumber</a>, <a href="http://documentcloud.github.com/underscore/#isBoolean">isBoolean</a>, <a href="http://documentcloud.github.com/underscore/#isDate">isDate</a>, <a href="http://documentcloud.github.com/underscore/#isRegExp">isRegExp</a> 
+   <a href="http://documentcloud.github.com/underscore/#isNaN">isNaN</a>, <a href="http://documentcloud.github.com/underscore/#isNull">isNull</a>,
+   <a href="http://documentcloud.github.com/underscore/#isUndefined">isUndefined</a> 
+   </span> 
+  </p> 
+
+  <p> 
+   <b>Utility</b> 
+   <br /> 
+   <span class="methods"><a href="http://documentcloud.github.com/underscore/#noConflict">noConflict</a>,
+   <a href="http://documentcloud.github.com/underscore/#identity">identity</a>, <a href="http://documentcloud.github.com/underscore/#times">times</a>, 
+   <a href="http://documentcloud.github.com/underscore/#mixin">mixin</a>, <a href="http://documentcloud.github.com/underscore/#uniqueId">uniqueId</a>, 
+   <a href="http://documentcloud.github.com/underscore/#template">template</a></span> 
+  </p> 
+
+  <p> 
+   <b>Chaining</b> 
+   <br /> 
+   <span class="methods"><a href="http://documentcloud.github.com/underscore/#chain">chain</a>, <a href="http://documentcloud.github.com/underscore/#value">value</a> 
+  </p> 
 </div>
 
 <div class="slide">
-    <h2>underscore.js &mdash; .intersection(arr1, arr2 ... ) </h2>
-    <div class="code_sample">
-        <textarea>
+  <h2>underscore.js &mdash; .intersection(arr1, arr2 ... ) </h2>
+  <div class="code_sample">
+    <textarea>
 var senators = [ 'Dodd', 'Franken', 'Lieberman' ]
 var comedians = [ 'Rock', 'Seinfeld', 'Franken' ]
 
 var intersect = []
 for(var s=0;s<senators.length;s++) {
-    for(var c=0;c<comedians.length;c++) {
-        if(senators[s] == comedians[c]) {
-            intersect.push( senators[s] );
-            break;
-        }
+  for(var c=0;c<comedians.length;c++) {
+    if(senators[s] == comedians[c]) {
+      intersect.push( senators[s] );
+      break;
     }
+  }
 }
 
 console.log("Comedian Senators: ", intersect)</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
-    <div class="code_sample">
-        <textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+  <div class="code_sample">
+    <textarea>
 var senators = [ 'Dodd', 'Franken', 'Lieberman' ]
 var comedians = [ 'Rock', 'Seinfeld', 'Franken' ]
 
 var intersect = _.intersection(senators,comedians)
 
 console.log("Comedian Senators: ", intersect)</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
+    <button>→</button>
+    <pre></pre>
+  </div>
 </div>
 
 <div class="slide">
-    <h2>underscore.js &mdash; .isEqual(object, other) </h2>
-    <div class="code_sample">
-        <textarea>
+  <h2>underscore.js &mdash; .isEqual(object, other) </h2>
+  <div class="code_sample">
+    <textarea>
 var a = { name: "Moe",
-          stats: { violent: true,
-                   age: 78,
-                   legs: 2 } }
+     stats: { violent: true,
+         age: 78,
+         legs: 2 } }
 var b = { name: "Moe",
-          stats: { violent: true,
-                   age: 78,
-                   legs: 2 } }
+     stats: { violent: true,
+         age: 78,
+         legs: 2 } }
 
 console.log("a == b .......... ", a == b)
 
 console.log("_.isEqual(a,b) .. ", _.isEqual(a,b))</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
-    <h2>underscore.js &mdash; .select(list, iterator, [context]) </h2>
-    <div class="code_sample">
-        <textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+  <h2>underscore.js &mdash; .select(list, iterator, [context]) </h2>
+  <div class="code_sample">
+    <textarea>
 var users = [
-    { name: "Frank", age: 17 },
-    { name: "Vladimir", age: 21 },
-    { name: "Susan", age: 88 },
-    { name: "Benny", age: 19 },
-    { name: "Rudolph", age: 34 },
-    { name: "Tony", age: 16 }
+  { name: "Frank", age: 17 },
+  { name: "Vladimir", age: 21 },
+  { name: "Susan", age: 88 },
+  { name: "Benny", age: 19 },
+  { name: "Rudolph", age: 34 },
+  { name: "Tony", age: 16 }
 ]
 
 var teens = _.select(
-    users,
-    function(user) {
-        return user.age >= 13 && user.age <= 19
-    }
+  users,
+  function(user) {
+    return user.age >= 13 && user.age <= 19
+  }
 )
 console.log( 'Teens: ', teens )</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
+    <button>→</button>
+    <pre></pre>
+  </div>
 </div>
 
 <div class="slide">
-    <h2>underscore.js &mdash; .pluck(list, propertyName) </h2>
-    <div class="code_sample">
-        <textarea>
+  <h2>underscore.js &mdash; .pluck(list, propertyName) </h2>
+  <div class="code_sample">
+    <textarea>
 var users = [
-    { id: 101, name: "Frank", age: 23 },
-    { id: 939, name: "Susan", age: 37 },
-    { id: 244, name: "Albert", age: 44 }
+  { id: 101, name: "Frank", age: 23 },
+  { id: 939, name: "Susan", age: 37 },
+  { id: 244, name: "Albert", age: 44 }
 ]
 
 var names = _.pluck( users, 'name' )
 
 console.log( names )</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
-    <h2>underscore.js &mdash; .groupBy(list, iterator) </h2>
-    <div class="code_sample">
-        <textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+  <h2>underscore.js &mdash; .groupBy(list, iterator) </h2>
+  <div class="code_sample">
+    <textarea>
 var users = [
-    { name: "Frank", country: 'USA' },
-    { name: "Vladimir", country: 'RUS' },
-    { name: "Tony", country: 'USA' }
+  { name: "Frank", country: 'USA' },
+  { name: "Vladimir", country: 'RUS' },
+  { name: "Tony", country: 'USA' }
 ]
 
 var by_country =
-    _.groupBy( users, function(u) { return u.country })
+  _.groupBy( users, function(u) { return u.country })
 
 console.log( 'USA:', by_country['USA'] )
 console.log( 'RUS:', by_country['RUS'] )</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
+    <button>→</button>
+    <pre></pre>
+  </div>
 </div>
 
 <div class="slide">
-    <h2>underscore.js &mdash; _(obj).chain() <img src="images/bb.gif" height="43" width="50" style="float: right;" /></h2>
-    <div class="code_sample">
-        <textarea>
+  <h2>underscore.js &mdash; _(obj).chain() <img src="images/bb.gif" height="43" width="50" style="float: right;" /></h2>
+  <div class="code_sample">
+    <textarea>
 var users = [
-    { name: "Frank", country: "USA", age: 20 },
-    { name: "Mark", country: "CAN", age: 41 },
-    { name: "Tony", country: "USA", age: 30 },
-    { name: "Bruce", country: "CAN", age: 38 },
-    { name: "Pierre", country: "FRA", age: 16 },
-    { name: "Kevin", country: "CAN", age: 32 },
-    { name: "Dave", country: "CAN", age: 39 }
+  { name: "Frank", country: "USA", age: 20 },
+  { name: "Mark", country: "CAN", age: 41 },
+  { name: "Tony", country: "USA", age: 30 },
+  { name: "Bruce", country: "CAN", age: 38 },
+  { name: "Pierre", country: "FRA", age: 16 },
+  { name: "Kevin", country: "CAN", age: 32 },
+  { name: "Dave", country: "CAN", age: 39 }
 ]
 
 var canadians_by_age = _(users).chain()
-    .select(function(user) {
-        return user.country == 'CAN'
-    })
-    .sortBy(function(user) {
-        return user.age
-    })
-    .map(function(user) {
-        return user.name
-    })
-    .value()
+  .select(function(user) {
+    return user.country == 'CAN'
+  })
+  .sortBy(function(user) {
+    return user.age
+  })
+  .map(function(user) {
+    return user.name
+  })
+  .value()
 
 console.log(canadians_by_age)</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
+    <button>→</button>
+    <pre></pre>
+  </div>
 </div>
 
 <div class="slide">
-    <h2>underscore.js &mdash; .debounce() </h2>
-    <button id="flash">Flash Background!</button>
-    <div class="code_sample">
-        <textarea>
+  <h2>underscore.js &mdash; .debounce() </h2>
+  <button id="flash">Flash Background!</button>
+  <div class="code_sample">
+    <textarea>
 flash = function() {
 
-    jQuery('.slide.deck-current')
-        .css({ backgroundColor: 'yellow', })
+  jQuery('.slide.deck-current')
+    .css({ backgroundColor: 'yellow', })
 
-    _.delay(
-        function() { 
-            jQuery('.slide.deck-current')
-                .css({ backgroundColor: 'white' })
-        },
-        100
-    )
+  _.delay(
+    function() { 
+      jQuery('.slide.deck-current')
+        .css({ backgroundColor: 'white' })
+    },
+    100
+  )
 }
 
 jQuery('#flash')
-    .bind('click', flash)
+  .bind('click', flash)
 
 console.log("Ready to flash!")</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
-    <div class="code_sample">
-        <textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+  <div class="code_sample">
+    <textarea>
 flash_rate_limited = _.debounce(flash, 1000);
 
 jQuery('#flash')
-    .unbind('click')
-    .bind('click', flash_rate_limited)
+  .unbind('click')
+  .bind('click', flash_rate_limited)
 
 console.log("Ready to flash reasonably!")</textarea>
-        <button>→</button>
-        <pre></pre>
-    </div>
+    <button>→</button>
+    <pre></pre>
+  </div>
 </div>
-	
+
 <div class="slide">
-    <h2>WUH</h2>
+  <h2>WUH</h2>
 </div>
-	
+
 <div class="slide">
-    <h2>HUH</h2>
+  <h2>HUH</h2>
 </div>
-	
+
 <div class="slide">
-    <h2>Let's Get Organized</h2>
-    <img src="images/bjork.png" />
-    <q>I thought I could organize freedom, how Scandinavian of me.</q>
-    <cite>Bjork</cite>
+  <h2>Let's Get Organized</h2>
+  <img src="images/bjork.png" />
+  <q>I thought I could organize freedom, how Scandinavian of me.</q>
+  <cite>Bjork</cite>
 </div>
-	
+
+
+
+<div class="slide">
+  <h2>backbone.js - Scraddle - Dictionary</h2>
+  <div class="code_sample">
+    <textarea>
+var Dictionary = Backbone.Model.extend({
+  is_valid: function(word) {
+    return _.include( this.get('words'), word ) 
+  }
+});
+
+var dict = new Dictionary({
+  words: [ 'cat', 'dog', 'magical', 'janitor' ]
+})
+
+console.log("potato:", dict.is_valid('potato'))
+console.log("janitor:", dict.is_valid('janitor'))</textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+</div>
+
+
+<div class="slide">
+  <h2>backbone.js - Scraddle - Tile Points</h2>
+  <div class="code_sample">
+    <textarea>
+// Letter, Points
+var Tile = Backbone.Model.extend({
+  points: function() {
+    var val = 0
+    _.each(Tile.points, function(pts,str) {
+      if( str.indexOf(this.get('letter')) != -1 ) {
+        val = pts
+      }
+    }, this)
+
+    return val
+  }
+},{
+  letter: function(letter) {
+    return new Tile({ letter: letter })
+  },
+  points: {
+    'EAIONRTLSU':  1,
+    'DG':          2,
+    'BCMP':        3,
+    'FHVWY':       4,
+    'K':           5,
+    'JX':          8,
+    'QZ':         10
+  }
+});
+
+console.log("E: ", Tile.letter("E").points())
+console.log("B: ", Tile.letter("B").points())
+console.log("K: ", Tile.letter("K").points())
+</textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+</div>
+
+
+
 <!-- Other extension HTML snippets go here, at the bottom of the deck container. -->
 
 <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
 <a href="#" class="deck-next-link" title="Next">&#8594;</a>
 
 <p class="deck-status">
-    <span class="deck-status-current"></span>
-    /
-    <span class="deck-status-total"></span>
+  <span class="deck-status-current"></span>
+  /
+  <span class="deck-status-total"></span>
 </p>
 
 <!-- Update these paths to point to the correct files. -->
@@ -385,6 +452,7 @@ console.log("Ready to flash reasonably!")</textarea>
 <script src="deck.js/extensions/navigation/deck.navigation.js"></script>
 <script src="deck.js/extensions/status/deck.status.js"></script>
 <script src="deck.js/extensions/hash/deck.hash.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
 <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
 
@@ -394,35 +462,39 @@ console.log("Ready to flash reasonably!")</textarea>
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
-	$(function() {
-		$.deck('.slide');
-	});
-    jQuery('.code_sample textarea').each(function() {
-        var lines = this.value.match(/\n/g) ? this.value.match(/\n/g).length : 1
-        jQuery(this).css({ height: 24 + lines * 18 })
-            .siblings('pre').css({ height: 24 + lines * 18 })
+$(function() {
+ $.deck('.slide');
+});
+  jQuery('.code_sample textarea').each(function() {
+    jQuery(this).keydown(function(e) {
+      e.stopPropagation()
     })
-    jQuery('.code_sample button').click(function() {
-        var button = jQuery(this);
-        code = button.siblings('textarea').val();
-        output = button.siblings('pre');
-        var origLog = console.log;
-        var log = ''
-        console.log = function() {
-            for(var a=0;a<arguments.length;a++) {
-                if(typeof arguments[a] == 'object') {
-                    log = log + JSON.stringify(arguments[a]) + " "
-                } else {
-                    log = log + arguments[a] + " "
-                }
-            }
-            log = log + "\n"
-            origLog.apply(console, arguments)
+
+    var lines = this.value.match(/\n/g) ? this.value.match(/\n/g).length : 1
+    jQuery(this).css({ height: 24 + lines * 18 })
+      .siblings('pre').css({ height: 24 + lines * 18 })
+  })
+  jQuery('.code_sample button').click(function() {
+    var button = jQuery(this);
+    code = button.siblings('textarea').val();
+    output = button.siblings('pre');
+    var origLog = console.log;
+    var log = ''
+    console.log = function() {
+      for(var a=0;a<arguments.length;a++) {
+        if(typeof arguments[a] == 'object') {
+          log = log + JSON.stringify(arguments[a]) + " "
+        } else {
+          log = log + arguments[a] + " "
         }
-        var out = eval(code)
-        console.log = origLog
-        output.text( log );
-    });
+      }
+      log = log + "\n"
+      origLog.apply(console, arguments)
+    }
+    var out = eval(code)
+    console.log = origLog
+    output.text( log );
+  });
 </script>
 </body>
 </html>
