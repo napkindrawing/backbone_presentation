@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Deck Skeleton</title>
+<title>backbone.js &mdash; Intro &mdash; &ldquo;Scraddle&rdquo;</title>
 <meta name="viewport" content="width=1024">
 
 <!-- Replace path with correct path to deck.core.css. -->
@@ -355,20 +355,175 @@ console.log("Ready to flash reasonably!")</textarea>
 </div>
 
 <div class="slide">
-  <h2>WUH</h2>
-</div>
-
-<div class="slide">
-  <h2>HUH</h2>
-</div>
-
-<div class="slide">
-  <h2>Let's Get Organized</h2>
+  <h2>backbone.js - Let's Get Organized</h2>
   <img src="images/bjork.png" />
   <q>I thought I could organize freedom, how Scandinavian of me.</q>
   <cite>Bjork</cite>
 </div>
 
+<div class="slide">
+
+  <h2>backbone.js - Let's Get Organized</h2>
+
+    <div>
+      <h3>Events</h3>
+      <ul>
+        <li>Mix into any object</li>
+        <li>Arbitrary names, with namespacing</li>
+        <li>May take arguments</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Model</h3>
+      <ul>
+        <li>Data</li>
+        <li>Logic</li>
+        <li>Conversions</li>
+        <li>Validations</li>
+        <li>Computed Properties</li>
+        <li>Access Control</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Collection</h3>
+      <ul>
+        <li>Ordered sets of Models</li>
+        <li>Can bind &amp; listen for events like <code>"add"</code> and <code>"remove"</code></li>
+        <li>Can fetch data from the server</li>
+        <li>Use the full suite of underscore.js methods</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Router</h3>
+      <ul>
+        <li>Routes client-side pages</li>
+        <li>History &amp; statefulness without <code>#</code>
+      </ul>
+    </div>
+
+    <div>
+      <h3>View</h3>
+      <ul>
+        <li>More convention than code</li>
+        <li>Use whatever JavaScript templating library you like</li>
+        <li>View &lt;----&gt; Model</li>
+        <li>Change/Update on events</li>
+      </ul>
+    </div>
+
+</div>
+
+
+
+<div class="slide">
+  <h2>backbone.js - Events</h2>
+  <div class="code_sample">
+    <textarea>
+var player_frank = { name: "Frank", rank: "Wizard" }
+var player_tony = { name: "Tony", rank: "Newbie" }
+
+_.extend( player_frank, Backbone.Events )
+
+player_frank.bind( "challenge", function(other_player) {
+
+  console.log( other_player.name, "challenges", this.name )
+
+})
+
+player_frank.trigger( 'challenge', player_tony )
+</textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>backbone.js - Model</h2>
+  <div class="code_sample">
+    <textarea>
+var Player = Backbone.Model.extend({
+  defaults: {
+    name: "Unnamed Player"
+  }
+})
+
+var some_player = new Player()
+
+console.log( some_player.get('name') )</textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>backbone.js - Model - validate</h2>
+  <div class="code_sample">
+    <textarea>
+var Player = Backbone.Model.extend({
+  defaults: {
+    name: "Unnamed Player"
+  },
+  validate: function(attrs) {
+    console.log("[Player] Validating: ",JSON.stringify(attrs))
+    if('name' in attrs) {
+      if( !attrs.name || !attrs.name.trim() ) {
+        return "name can't be empty"
+      }
+    }
+  }
+})
+
+var player = new Player()
+console.log( "Default Name:", player.get('name') )
+
+var err_handler = function(model,err) {
+  console.log("OH NO!! ERROR: ",err)
+}
+
+console.log("Setting name to ''")
+player.set( { name: "" }, { error: err_handler } )
+
+console.log( "Name:", player.get('name') ) </textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+</div>
+
+<div class="slide">
+  <h2>backbone.js - Model - bind</h2>
+  <div class="code_sample">
+    <textarea>
+var Player = Backbone.Model.extend({
+  defaults: {
+    name: "Unnamed Player",
+    eliteness: 5
+  }
+})
+
+var player = new Player({ name: "Frank" })
+
+player.bind('change:email', function(model, email) {
+
+  if(email.match(/@aol\.com$/)) {
+    model.set({
+      eliteness: _.max([ 0, model.get('eliteness') - 3 ])
+    })
+  }
+
+})
+
+console.log( "Player:", player.toJSON() )
+
+player.set({ email: 'frank@aol.com' })
+
+console.log( "Player:", player.toJSON() ) </textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+</div>
 
 
 <div class="slide">
@@ -376,9 +531,11 @@ console.log("Ready to flash reasonably!")</textarea>
   <div class="code_sample">
     <textarea>
 var Dictionary = Backbone.Model.extend({
+
   is_valid: function(word) {
     return _.include( this.get('words'), word ) 
   }
+
 });
 
 var dict = new Dictionary({
@@ -399,6 +556,7 @@ console.log("janitor:", dict.is_valid('janitor'))</textarea>
     <textarea>
 // Letter, Points
 var Tile = Backbone.Model.extend({
+
   points: function() {
     var val = 0
     _.each(Tile.points, function(pts,str) {
@@ -409,7 +567,9 @@ var Tile = Backbone.Model.extend({
 
     return val
   }
+
 },{
+
   letter: function(letter) {
     return new Tile({ letter: letter })
   },
@@ -422,12 +582,12 @@ var Tile = Backbone.Model.extend({
     'JX':          8,
     'QZ':         10
   }
+
 });
 
-console.log("E: ", Tile.letter("E").points())
-console.log("B: ", Tile.letter("B").points())
-console.log("K: ", Tile.letter("K").points())
-</textarea>
+console.log("E: ", Tile.letter("E").points() )
+console.log("B: ", Tile.letter("B").points() )
+console.log("K: ", Tile.letter("K").points() )</textarea>
     <button>→</button>
     <pre></pre>
   </div>
@@ -471,8 +631,8 @@ $(function() {
     })
 
     var lines = this.value.match(/\n/g) ? this.value.match(/\n/g).length : 1
-    jQuery(this).css({ height: 24 + lines * 18 })
-      .siblings('pre').css({ height: 24 + lines * 18 })
+    jQuery(this).css({ height: 24 + lines * 17 })
+      .siblings('pre').css({ height: 24 + lines * 17 })
   })
   jQuery('.code_sample button').click(function() {
     var button = jQuery(this);
