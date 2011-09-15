@@ -47,7 +47,7 @@ var Player = Backbone.Model.extend({
 
 var tony = new Player({ name: "Tony" });
 
-console.log( tony.get('name') );</textarea>
+console.log( "Hark! A Player named ", tony.get('name') );</textarea>
     <button>→</button>
     <pre></pre>
   </div>
@@ -61,7 +61,7 @@ console.log( tony.get('name') );</textarea>
     <li class="slide">Global Variables</li>
     <li class="slide">No / Terrible Modularity</li>
     <li class="slide">Function Party</li>
-    <li class="slide">Anarchy</li>
+    <li class="slide">Anarchy ... it works but you keep needing a bigger gun</li>
   </ul>
   <img style="float: right;" class="slide" src="images/guns.jpg" />
 </div>
@@ -559,6 +559,50 @@ console.log( "Player:", player.toJSON() ) </textarea>
   </div>
 </div>
 
+<div class="slide">
+  <h2>backbone.js - Backbone.Model - Class Methods</h2>
+
+  <div class="code_sample">
+    <textarea>
+// Letter, Points
+var Tile = Backbone.Model.extend({
+
+  points: function() {
+    var val = 0
+    _.each(Tile.points, function(pts,str) {
+      if( str.indexOf(this.get('letter')) != -1 ) {
+        val = pts
+      }
+    }, this)
+
+    return val
+  }
+
+},{
+
+  letter: function(letter) {
+    return new Tile({ letter: letter })
+  },
+  points: {
+    'EAIONRTLSU':  1,
+    'DG':          2,
+    'BCMP':        3,
+    'FHVWY':       4,
+    'K':           5,
+    'JX':          8,
+    'QZ':         10
+  }
+
+});
+
+console.log("E: ", Tile.letter("E").points() )
+console.log("B: ", Tile.letter("B").points() )
+console.log("K: ", Tile.letter("K").points() )</textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+</div>
+
 
 <div class="slide">
 
@@ -644,6 +688,7 @@ console.log("Total yards: ", panthers.get('total_yards')) </textarea>
   </div>
 
 </div>
+
 
 <div class="slide">
 
@@ -770,71 +815,15 @@ board_view.render()
 
 
 <div class="slide">
-  <h2>backbone.js - Scraddle - Dictionary</h2>
-  <div class="code_sample">
-    <textarea>
-var Dictionary = Backbone.Model.extend({
-
-  is_valid: function(word) {
-    return _.include( this.get('words'), word ) 
-  }
-
-});
-
-var dict = new Dictionary({
-  words: [ 'cat', 'dog', 'magical', 'janitor' ]
-})
-
-console.log("potato:", dict.is_valid('potato'))
-console.log("janitor:", dict.is_valid('janitor'))</textarea>
-    <button>→</button>
-    <pre></pre>
-  </div>
+  <h2>Thank You!</h2>
+  <ul>
+    <li>Mike Walker</li>
+    <li><a href="http://twitter.com/fansipans">@fansipans</a></li>
+    <li><a href="mailto:mike.walker@napkindrawing.com">mike.walker@napkindrawing.com</a>
+    <li><a href=">http://napkindrawing.com">http://napkindrawing.com</a></li>
+  </ul>
 </div>
 
-
-<div class="slide">
-  <h2>backbone.js - Scraddle - Tile Points</h2>
-  <div class="code_sample">
-    <textarea>
-// Letter, Points
-var Tile = Backbone.Model.extend({
-
-  points: function() {
-    var val = 0
-    _.each(Tile.points, function(pts,str) {
-      if( str.indexOf(this.get('letter')) != -1 ) {
-        val = pts
-      }
-    }, this)
-
-    return val
-  }
-
-},{
-
-  letter: function(letter) {
-    return new Tile({ letter: letter })
-  },
-  points: {
-    'EAIONRTLSU':  1,
-    'DG':          2,
-    'BCMP':        3,
-    'FHVWY':       4,
-    'K':           5,
-    'JX':          8,
-    'QZ':         10
-  }
-
-});
-
-console.log("E: ", Tile.letter("E").points() )
-console.log("B: ", Tile.letter("B").points() )
-console.log("K: ", Tile.letter("K").points() )</textarea>
-    <button>→</button>
-    <pre></pre>
-  </div>
-</div>
 
 
 
