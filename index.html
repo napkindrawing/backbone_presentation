@@ -605,6 +605,60 @@ console.log("K: ", Tile.letter("K").points() )</textarea>
 
 
 <div class="slide">
+  <h2>backbone.js - Backbone.Model - Inheritance</h2>
+
+  <div class="code_sample">
+    <textarea>
+var Car = Backbone.Model.extend({
+  set: function(attrs, opts) {
+    if('speed' in attrs && attrs.speed > 85) {
+      attrs.speed = 85
+    }
+    Backbone.Model.prototype.set.call(this, attrs, opts)
+  }
+})
+
+var Batmobile = Car.extend({
+
+  set: function(attrs, opts) {
+    if('speed' in attrs && attrs.speed > 300) {
+      attrs.speed = 300
+    }
+    Backbone.Model.prototype.set.call(this, attrs, opts)
+  },
+
+  fire_guns: function() {
+    console.log("Firing guns, destroying evil")
+  }
+})
+
+var tercel = new Car()
+tercel.set({ speed: 70 })
+console.log("Tercel speed after set to 70: ",
+            tercel.get('speed'))
+
+tercel.set({ speed: 180 })
+console.log("Tercel speed after set to 180: ",
+            tercel.get('speed'))
+
+var batmobile = new Batmobile()
+batmobile.set({ speed: 235 })
+console.log("Tercel speed after set to 235: ",
+            batmobile.get('speed'))
+
+var batmobile = new Batmobile()
+batmobile.set({ speed: 535 })
+console.log("Tercel speed after set to 535: ",
+            batmobile.get('speed'))
+
+</textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+</div>
+
+
+<div class="slide">
 
   <h2>backbone.js - Backbone.Collection</h2>
 
@@ -816,13 +870,14 @@ board_view.render()
 
 <div class="slide">
   <h2>Thank You!</h2>
-  <ul>
+  <ul style="float: left;">
     <li>Mike Walker</li>
     <li><a href="http://twitter.com/fansipans">@fansipans</a></li>
     <li><a href="mailto:mike.walker@napkindrawing.com">mike.walker@napkindrawing.com</a>
     <li><a href=">http://napkindrawing.com">http://napkindrawing.com</a></li>
     <li><a href=">http://github.com/napkindrawing">http://github.com/napkindrawing</a></li>
   </ul>
+  <img src="http://farm7.static.flickr.com/6190/6113242449_a083cb98df_d.jpg" style="float: right; margin-right: 140px;"/>
 </div>
 
 
