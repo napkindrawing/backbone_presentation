@@ -599,6 +599,174 @@ console.log("Plucked Names: ", players.pluck('name'))</textarea>
 
 </div>
 
+<div class="slide">
+
+  <h2>backbone.js - Backbone.Collection</h2>
+
+  <div class="code_sample">
+    <textarea>
+var Player = Backbone.Model.extend({ })
+
+var Players = Backbone.Collection.extend({
+  model: Player
+})
+
+var Team = Backbone.Model.extend({
+  initialize: function(opts) {
+
+    _.bindAll(this)
+
+    var players = new Players()
+
+    players.bind('add', this.update_stats)
+    players.bind('change', this.update_stats)
+
+    this.set({ players: players })
+  },
+  update_stats: function() {
+    var total = this.get('players').reduce(function(tot,p) {
+      return tot + p.get('yards')
+    }, 0)
+    this.set({ total_yards: total })
+  }
+})
+
+var panthers = new Team()
+
+var cam = new Player({ name: "Cam Newton", yards: 412 })
+var jon = new Player({ name: "Jonathan Stewart", yards: 123 })
+
+panthers.get('players').add([ cam, jon ])
+
+console.log("Total yards: ", panthers.get('total_yards')) </textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+
+</div>
+
+<div class="slide">
+
+  <h2>backbone.js - Backbone.View</h2>
+
+    <div>
+      <h3>Backbone.View</h3>
+      <ul>
+        <li>More convention than code</li>
+        <li>Use whatever JavaScript templating library you like</li>
+        <li>View &lt;----&gt; Model</li>
+        <li>Change/Update on events</li>
+        <li>Events, Events, Events!</li>
+      </ul>
+    </div>
+
+  <div class="code_sample">
+    <textarea>
+var Board = Backbone.Model.extend({
+  defaults: {
+    size: 7
+  }
+})
+
+var BoardView = Backbone.View.extend({
+  tagName: 'table',
+  render: function() {
+    jQuery('.deck-current .example').append(this.el)
+    for(var h=0;h<this.model.get('size');h++) {
+      var row = jQuery('<tr></tr>')
+      for(var w=0;w<this.model.get('size');w++) {
+        row.append('<td></td>')
+      }
+      jQuery(this.el).append(row)
+    }
+  }
+})
+
+var board = new Board()
+var board_view = new BoardView({ model: board })
+
+board_view.render()
+
+</textarea>
+    <button>→</button>
+    <pre class="with_example"></pre>
+    <div class="example"></div>
+  </div>
+
+
+</div>
+
+
+<div class="slide">
+
+  <h2>backbone.js - Backbone.View</h2>
+
+  <div class="code_sample">
+    <textarea>
+var Board = Backbone.Model.extend({
+  defaults: function() {
+    return {
+      size: 7,
+      cells: []
+    }
+  },
+  set_cell: function(x,y,c) {
+    this.get('cells')[x*this.get('size')+y] = c
+  },
+  get_cell: function(x,y) {
+    var c = this.get('cells')[x*this.get('size')+y]
+    return c ? c : ''
+  }
+})
+
+var BoardView = Backbone.View.extend({
+
+  tagName: 'table',
+
+  events: {
+    'click td': 'prompt_for_cell'
+  },
+
+  prompt_for_cell: function(e) {
+    var str = prompt('Letter:')
+    this.model.set_cell(
+      e.target.cellIndex, 
+      e.target.parentNode.rowIndex, 
+      str
+    )
+    this.render()
+  },
+
+  render: function() {
+    jQuery(this.el).empty()
+    for(var h=0;h<this.model.get('size');h++) {
+      var row = jQuery('<tr></tr>')
+      for(var w=0;w<this.model.get('size');w++) {
+        row.append('<td>' + this.model.get_cell(w,h)+'</td>')
+      }
+      jQuery(this.el).append(row)
+    }
+  }
+})
+
+var board = new Board()
+var board_view = new BoardView({ model: board })
+
+jQuery('.deck-current .example').append(board_view.el)
+
+board_view.render()
+
+</textarea>
+    <button>→</button>
+    <pre class="with_example"></pre>
+    <div class="example"></div>
+  </div>
+
+
+</div>
+
+
+
 
 
 <div class="slide">
@@ -688,12 +856,12 @@ console.log("K: ", Tile.letter("K").points() )</textarea>
 <script src="deck.js/extensions/status/deck.status.js"></script>
 <script src="deck.js/extensions/hash/deck.hash.js"></script>
 <script src="deck.js/extensions/menu/deck.menu.js"></script>
-<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+<script src="underscore-min.js"></script>
+<script src="backbone-min.js"></script>
 
 <!-- Add any other extension JS files here -->
 
-<script src="app.js"></script>
+<!-- <script src="app.js"></script> -->
 
 <!-- Initialize the deck. You can put this in an external file if desired. -->
 <script>
@@ -706,8 +874,11 @@ $(function() {
     })
 
     var lines = this.value.match(/\n/g) ? this.value.match(/\n/g).length : 1
-    jQuery(this).css({ height: 24 + lines * 17 })
-      .siblings('pre').css({ height: 24 + lines * 17 })
+    var with_example = !!jQuery(this).siblings('.example').length
+    var h = 24 + lines * 17
+    jQuery(this).css({ height: h })
+      .siblings('pre').css({ height: with_example ? (h/2) : h })
+      .siblings('div.example').css({ height: (h / 2)-34 })
   })
   jQuery('.code_sample button').click(function() {
     var button = jQuery(this);

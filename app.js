@@ -6,6 +6,8 @@ var Player = Backbone.Model.extend({
     }
 });
 
+var Hand = Backbone.Model.extend
+
 
 var DOUBLE_WORD_SCORE = 0;
 var TRIPLE_WORD_SCORE = 1;

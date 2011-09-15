@@ -52,20 +52,37 @@ clear: left;
 }
 .code_sample textarea,
 .code_sample button,
-.code_sample pre {
+.code_sample pre,
+.code_sample div.example {
     float: left;
 }
 .code_sample button {
     margin-top: 48px;
 }
 .code_sample textarea,
-.code_sample pre {
+.code_sample pre,
+.code_sample div.example {
     width: 45%;
     height: 120px;
     padding: 8px;
     margin: 8px;
     font-size: 14px;
     font-family: monospace;
+}
+.code_sample div.example,
+.code_sample pre.with_example {
+}
+.code_sample div.example {
+  border: 1px solid #ccc;
+  margin-left: 40px;
+}
+
+.code_sample div.example td {
+  height: 16px;
+  width: 16px;
+  padding: 4px;
+  border: 2px inset #ccc;
+  text-align: center;
 }
 
 img {
