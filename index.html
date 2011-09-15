@@ -416,10 +416,20 @@ console.log("Ready to flash reasonably!")</textarea>
 
 </div>
 
-
-
 <div class="slide">
-  <h2>backbone.js - Events</h2>
+  <h2>backbone.js - Backbone.Events</h2>
+
+    <div>
+      <h3>Backbone.Events</h3>
+      <ul>
+        <li>Life of the Party!</li>
+      </ul>
+      <ul>
+        <li><code>.bind(event, callback, [context])</code></li>
+        <li><code>.trigger(event, [*args])</code></li>
+      </ul>
+    </div>
+
   <div class="code_sample">
     <textarea>
 var player_frank = { name: "Frank", rank: "Wizard" }
@@ -441,7 +451,32 @@ player_frank.trigger( 'challenge', player_tony )
 </div>
 
 <div class="slide">
-  <h2>backbone.js - Model</h2>
+
+  <h2>backbone.js - Backbone.Model</h2>
+
+    <div>
+      <h3>Backbone.Model</h3>
+      <ul>
+        <li>Data</li>
+        <li>Logic</li>
+        <li>Conversions</li>
+        <li>Validations</li>
+        <li>Computed Properties</li>
+        <li>Access Control</li>
+      </ul>
+      <ul>
+        <li><code>.set(attributes, [options])</code></li>
+        <li><code>.get(attribute)</code></li>
+        <li><code>.save([attribute],[options])</code></li>
+      </ul>
+    </div>
+
+</div>
+
+
+
+<div class="slide">
+  <h2>backbone.js - Backbone.Model</h2>
   <div class="code_sample">
     <textarea>
 var Player = Backbone.Model.extend({
@@ -459,7 +494,7 @@ console.log( some_player.get('name') )</textarea>
 </div>
 
 <div class="slide">
-  <h2>backbone.js - Model - validate</h2>
+  <h2>backbone.js - Backbone.Model - validate</h2>
   <div class="code_sample">
     <textarea>
 var Player = Backbone.Model.extend({
@@ -468,10 +503,8 @@ var Player = Backbone.Model.extend({
   },
   validate: function(attrs) {
     console.log("[Player] Validating: ",JSON.stringify(attrs))
-    if('name' in attrs) {
-      if( !attrs.name || !attrs.name.trim() ) {
-        return "name can't be empty"
-      }
+    if('name' in attrs && attrs.name=='Jim Jarmusch') {
+      return "name can't be Jim Jarmusch!!"
     }
   }
 })
@@ -483,8 +516,8 @@ var err_handler = function(model,err) {
   console.log("OH NO!! ERROR: ",err)
 }
 
-console.log("Setting name to ''")
-player.set( { name: "" }, { error: err_handler } )
+console.log("Setting name to 'Jim Jarmusch'")
+player.set( { name: "Jim Jarmusch" }, { error: err_handler } )
 
 console.log( "Name:", player.get('name') ) </textarea>
     <button>→</button>
@@ -493,27 +526,28 @@ console.log( "Name:", player.get('name') ) </textarea>
 </div>
 
 <div class="slide">
-  <h2>backbone.js - Model - bind</h2>
+  <h2>backbone.js - Backbone.Model - bind</h2>
   <div class="code_sample">
     <textarea>
 var Player = Backbone.Model.extend({
   defaults: {
     name: "Unnamed Player",
     eliteness: 5
+  },
+
+  initialize: function(opts) {
+
+    var elite_modifier = function(model, email) {
+      if(email.match(/@aol\.com$/)) {
+        model.set({ eliteness: model.get('eliteness') - 3 })
+      }
+    }
+
+    this.bind('change:email', elite_modifier)
   }
 })
 
 var player = new Player({ name: "Frank" })
-
-player.bind('change:email', function(model, email) {
-
-  if(email.match(/@aol\.com$/)) {
-    model.set({
-      eliteness: _.max([ 0, model.get('eliteness') - 3 ])
-    })
-  }
-
-})
 
 console.log( "Player:", player.toJSON() )
 
@@ -524,6 +558,47 @@ console.log( "Player:", player.toJSON() ) </textarea>
     <pre></pre>
   </div>
 </div>
+
+
+<div class="slide">
+
+  <h2>backbone.js - Backbone.Collection</h2>
+
+    <div>
+      <h3>Backbone.Collection</h3>
+      <ul>
+        <li>Ordered sets of Models</li>
+        <li>Can bind &amp; listen for events like <code>"add"</code> and <code>"remove"</code></li>
+        <li>Can fetch data from the server</li>
+        <li>Use the full suite of underscore.js methods</li>
+      </ul>
+    </div>
+
+  <div class="code_sample">
+    <textarea>
+var Player = Backbone.Model.extend({
+})
+
+var Players = Backbone.Collection.extend({
+  model: Player
+})
+
+var players = new Players()
+
+players.bind('add', function(model) {
+  console.log("[PLAYER PLAYER] Dude! New Player! ", model)
+})
+
+players.add( new Player({ name: "Jules" }) )
+players.add( new Player({ name: "Frankie" }) )
+
+console.log("Plucked Names: ", players.pluck('name'))</textarea>
+    <button>→</button>
+    <pre></pre>
+  </div>
+
+</div>
+
 
 
 <div class="slide">

@@ -1,3 +1,12 @@
+var Player = Backbone.Model.extend({
+    defaults: {
+        name: 'Unnamed Player'
+    },
+    initialize: function(opts) {
+    }
+});
+
+
 var DOUBLE_WORD_SCORE = 0;
 var TRIPLE_WORD_SCORE = 1;
 var DOUBLE_LETTER_SCORE = 2;
@@ -27,6 +36,34 @@ var Board = Backbone.Model.extend({
     }
     
 });
+
+var GameView = Backbone.View.extend({
+
+    className: 'game',
+
+    render: function() {
+        jQuery('#game_container').append(this.el);
+        jQuery(this.el).append('<div class="board_container"></div>')
+                       .append('<div class="hand_container"></div>')
+
+        var board_view = new BoardView({ model: new Board() })
+        jQuery(this.el).append( board_view.el )
+        board_view.render()
+
+        var hand_view = new HandView({ model: new Hand() })
+        jQuery(this.el).append( hand_view.el )
+        hand_view.render()
+    }
+})
+
+var HandView = Backbone.View.extend({
+    
+    className: 'hand',
+    
+    render: function() {
+        
+    }
+})
     
 var BoardView = Backbone.View.extend({
     
@@ -34,14 +71,12 @@ var BoardView = Backbone.View.extend({
     
     render: function() {
         
-        jQuery('#boardContainer').append(this.el);
-        
         var table = jQuery('<table></table>');
         
         for( var h=0 ; h<this.model.get('height') ; h++) {
             var row = jQuery('<tr></tr>');
             for( var w=0 ; w<this.model.get('width') ; w++) {
-                var cell = jQuery('<td>.</td>');
+                var cell = jQuery('<td></td>');
                 var modifier = this.model.get('modifiers')[w.toString()+","+h.toString()];
                 if(modifier !== undefined) {
                     switch(modifier) {
@@ -78,8 +113,5 @@ var Player = Backbone.Model.extend({
 var dude = new Player();
 dude.bind('change:name', function() { console.log("Witness Protection Engaged!") });
 
-
-board = new Board();
-
-boardView = new BoardView({ model: board });
-boardView.render();
+var game_view = new GameView();
+game_view.render()
